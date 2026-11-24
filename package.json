@@ -1,0 +1,125 @@
+{
+  "name": "@datacircle/xmcp",
+  "version": "0.1.0",
+  "description": "xmcp tools on Datacircle's open API: find the best GTM APIs. GTM means go-to-market. GTM APIs are the APIs sales and marketing teams use. List every API and see which provider ranks first on each one. Search every provider's pricing plans. See where a provider ranks. No API key needed.",
+  "keywords": [
+    "xmcp",
+    "mcp",
+    "mcp-server",
+    "mcp-tools",
+    "model-context-protocol",
+    "tools",
+    "gtm",
+    "gtm-apis",
+    "api",
+    "api-directory",
+    "api-pricing",
+    "b2b-data",
+    "data-enrichment",
+    "datacircle"
+  ],
+  "homepage": "https://datacircle.dev",
+  "bugs": {
+    "url": "https://github.com/waynehamadi/xmcp-datacircle/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waynehamadi/xmcp-datacircle.git"
+  },
+  "license": "MIT",
+  "author": "Datacircle <wayne@datacircle.dev> (https://datacircle.dev)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./list-apis": {
+      "import": {
+        "types": "./dist/list-apis.d.ts",
+        "default": "./dist/list-apis.js"
+      },
+      "require": {
+        "types": "./dist/cjs/list-apis.d.ts",
+        "default": "./dist/cjs/list-apis.js"
+      }
+    },
+    "./best-plans": {
+      "import": {
+        "types": "./dist/best-plans.d.ts",
+        "default": "./dist/best-plans.js"
+      },
+      "require": {
+        "types": "./dist/cjs/best-plans.d.ts",
+        "default": "./dist/cjs/best-plans.js"
+      }
+    },
+    "./search-plans": {
+      "import": {
+        "types": "./dist/search-plans.d.ts",
+        "default": "./dist/search-plans.js"
+      },
+      "require": {
+        "types": "./dist/cjs/search-plans.d.ts",
+        "default": "./dist/cjs/search-plans.js"
+      }
+    },
+    "./provider": {
+      "import": {
+        "types": "./dist/provider.d.ts",
+        "default": "./dist/provider.js"
+      },
+      "require": {
+        "types": "./dist/cjs/provider.d.ts",
+        "default": "./dist/cjs/provider.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "list-apis": [
+        "./dist/cjs/list-apis.d.ts"
+      ],
+      "best-plans": [
+        "./dist/cjs/best-plans.d.ts"
+      ],
+      "search-plans": [
+        "./dist/cjs/search-plans.d.ts"
+      ],
+      "provider": [
+        "./dist/cjs/provider.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
+    "test": "npm run build && node test/live.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.76 || ^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "zod": "^4.1.13"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
